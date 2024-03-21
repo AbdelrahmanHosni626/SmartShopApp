@@ -16,6 +16,12 @@ class AppTheme {
         selectedIconTheme: const IconThemeData(size: 35.0),
         elevation: 0.0,
       ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: isDark ? AppColors.darkScaffold : AppColors.lightScaffold,
+        titleTextStyle: TextStyle(
+          color: isDark ? Colors.white : Colors.black,
+        )
+      )
     );
   }
 }
