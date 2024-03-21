@@ -6,7 +6,7 @@ import 'package:smart_app/features/bottom_navigation_bar/ui/bottom_navigation_ba
 import 'package:smart_app/features/home/ui/home_screen.dart';
 
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
 
       case Routes.homeScreen:
@@ -18,13 +18,7 @@ class AppRouter {
 
 
       default:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No Route Defined For ${settings.name}'),
-            ),
-          ),
-        );
+        return null;
     }
   }
 }
