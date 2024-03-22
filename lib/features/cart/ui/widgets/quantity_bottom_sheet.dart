@@ -36,7 +36,7 @@ class QuantityBottomSheet extends StatelessWidget {
                         child: AppText(
                       text: (index + 1).toString(),
                       fontSize: 20,
-                    )),
+                    ),),
                   ),
                 );
               },
