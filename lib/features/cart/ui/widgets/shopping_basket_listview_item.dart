@@ -4,6 +4,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
+import 'package:smart_app/features/cart/ui/widgets/quantity_bottom_sheet.dart';
 
 class ShoppingBasketListViewItem extends StatelessWidget {
   const ShoppingBasketListViewItem({super.key});
@@ -67,7 +68,14 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                         const AppText(text: '\$50.00'),
                         const Spacer(),
                         OutlinedButton.icon(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const QuantityBottomSheet();
+                              },
+                            );
+                          },
                           icon: const Icon(IconlyLight.arrowDown2),
                           label: const Text('Qty: 6'),
                         ),
