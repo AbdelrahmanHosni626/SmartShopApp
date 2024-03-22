@@ -47,22 +47,22 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavigationBarState());
   }
 
-  bool _isDark = false;
+  bool isDark = false;
 
-  bool get getIsDarkMode => _isDark;
+  bool get getIsDarkMode => isDark;
   static const themeStatus = 'THEME_STATUS';
 
   Future<void> setDarkMode({required bool themeValue}) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setBool(themeStatus, themeValue);
-    _isDark = themeValue;
+    isDark = themeValue;
     emit(ChangeAppModeState());
   }
 
   Future<bool> getThemeMode() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    _isDark = pref.getBool(themeStatus) ?? false;
+    isDark = pref.getBool(themeStatus) ?? false;
     emit(ChangeAppModeState());
-    return _isDark;
+    return isDark;
   }
 }
