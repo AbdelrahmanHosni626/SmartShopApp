@@ -32,7 +32,10 @@ class AppCubit extends Cubit<AppStates> {
       label: 'Search',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(IconlyLight.bag),
+      icon: Badge(
+        label: Text('6'),
+        child: Icon(IconlyLight.bag),
+      ),
       label: 'Cart',
     ),
     const BottomNavigationBarItem(
@@ -40,7 +43,6 @@ class AppCubit extends Cubit<AppStates> {
       label: 'Profile',
     ),
   ];
-
 
   void changeBottomNav(int index) {
     currentIndex = index;
