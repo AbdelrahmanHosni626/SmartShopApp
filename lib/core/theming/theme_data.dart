@@ -21,7 +21,7 @@ class AppTheme {
         titleTextStyle: TextStyle(
           color: isDark ? Colors.white : Colors.black,
         )
-      )
+      ),
     );
   }
 }

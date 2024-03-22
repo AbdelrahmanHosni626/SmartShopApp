@@ -4,7 +4,9 @@ import 'package:shimmer/shimmer.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 
 class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({super.key});
+  final String title;
+  final double fontSize;
+  const AppBarTitle({super.key, required this.title, required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,6 @@ class AppBarTitle extends StatelessWidget {
     baseColor: Colors.purple,
     highlightColor: Colors.red,
     period: const Duration(seconds: 6),
-    child: const AppText(text: 'SmartShop', fontSize: 30,),);
+    child: AppText(text: title, fontSize: fontSize,),);
   }
 }

@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset(Assets.bagShoppingCart),
-        title: const AppBarTitle(),
+        title: const AppBarTitle(title: 'SmartShop', fontSize: 30,),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
