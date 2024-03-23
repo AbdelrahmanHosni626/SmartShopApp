@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
-import 'package:smart_app/features/profile/ui/widgets/app_bar_title.dart';
+import 'package:smart_app/core/widgets/custom_app_bar.dart';
 import 'package:smart_app/features/profile/ui/widgets/general_section.dart';
 import 'package:smart_app/features/profile/ui/widgets/others_section.dart';
 import 'package:smart_app/features/profile/ui/widgets/please_login.dart';
 import 'package:smart_app/features/profile/ui/widgets/setting_section.dart';
 import 'package:smart_app/features/profile/ui/widgets/user_info.dart';
-import 'package:smart_app/generated/assets.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,10 +13,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Image.asset(Assets.bagShoppingCart),
-        title: const AppBarTitle(title: 'SmartShop', fontSize: 30,),
-      ),
+      appBar: const CustomAppBar(title: 'SmartShop', fontSize: 25),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
