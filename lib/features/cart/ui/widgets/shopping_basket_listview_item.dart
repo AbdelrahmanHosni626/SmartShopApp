@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 import 'package:smart_app/features/cart/ui/widgets/quantity_bottom_sheet.dart';
+import 'package:smart_app/generated/assets.dart';
 
 class ShoppingBasketListViewItem extends StatelessWidget {
   const ShoppingBasketListViewItem({super.key});
@@ -22,7 +23,7 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
                 child: FancyShimmerImage(
                   imageUrl:
-                      'https://w7.pngwing.com/pngs/261/729/png-transparent-air-force-1-nike-air-max-nike-free-sneakers-nike-white-orange-sneakers.png',
+                      Assets.testImage,
                   height: size.height * 0.2.h,
                   width: size.width * 0.3.w,
                 ),

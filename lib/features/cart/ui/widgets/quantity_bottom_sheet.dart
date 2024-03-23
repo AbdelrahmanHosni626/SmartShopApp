@@ -16,10 +16,10 @@ class QuantityBottomSheet extends StatelessWidget {
           Container(
             width: 50.w,
             height: 6.h,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(12),
+                  Radius.circular(12.r),
                 )),
           ),
           verticalSpace(20),
