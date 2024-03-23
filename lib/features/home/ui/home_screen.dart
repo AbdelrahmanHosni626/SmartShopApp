@@ -12,20 +12,13 @@ class HomeScreen extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Text(
+        return const Scaffold(
+          body: Center(
+            child: Text(
               'Home Screen',
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('Hello World')),
-            SwitchListTile(
-                value: cubit.getIsDarkMode,
-                onChanged: (value) {
-                  cubit.setDarkMode(themeValue: value);
-                },
-                title: Text(cubit.getIsDarkMode ? 'Dark Mode' : 'Light Mode')),
-          ]),
+          ),
         );
       },
     );

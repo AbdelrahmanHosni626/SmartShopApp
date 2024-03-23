@@ -2,6 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String testImage = 'https://w7.pngwing.com/pngs/261/729/png-transparent-air-force-1-nike-air-max-nike-free-sneakers-nike-white-orange-sneakers.png';
+
+
   static const String bagBagWish = 'assets/images/bag/bag_wish.png';
   static const String bagOrder = 'assets/images/bag/order.png';
   static const String bagOrderSvg = 'assets/images/bag/order_svg.png';
