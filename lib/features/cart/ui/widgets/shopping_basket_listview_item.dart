@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/core/widgets/app_heart_icon.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 import 'package:smart_app/features/cart/ui/widgets/quantity_bottom_sheet.dart';
 import 'package:smart_app/generated/assets.dart';
@@ -53,13 +54,7 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                                 color: Colors.red,
                               ),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                IconlyLight.heart,
-                                color: Colors.red,
-                              ),
-                            ),
+                            const AppHeartIconButton(fgColor: Colors.red, bgColor:  Colors.transparent,),
                           ],
                         ),
                       ],

@@ -13,11 +13,11 @@ class AppCubit extends Cubit<AppStates> {
 
   static AppCubit get(context) => BlocProvider.of(context);
 
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   List<Widget> screens = [
     const HomeScreen(),
-    SearchScreen(),
+    const SearchScreen(),
     const CartScreen(),
     const ProfileScreen(),
   ];
@@ -49,22 +49,22 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavigationBarState());
   }
 
-  bool isDark = false;
+  bool _isDark = false;
 
-  bool get getIsDarkMode => isDark;
+  bool get getIsDarkMode => _isDark;
   static const themeStatus = 'THEME_STATUS';
 
   Future<void> setDarkMode({required bool themeValue}) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setBool(themeStatus, themeValue);
-    isDark = themeValue;
+    _isDark = themeValue;
     emit(ChangeAppModeState());
   }
 
   Future<bool> getThemeMode() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    isDark = pref.getBool(themeStatus) ?? false;
+    _isDark = pref.getBool(themeStatus) ?? false;
     emit(ChangeAppModeState());
-    return isDark;
+    return _isDark;
   }
 }

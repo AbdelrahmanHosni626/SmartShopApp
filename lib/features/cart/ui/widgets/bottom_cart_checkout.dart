@@ -12,7 +12,7 @@ class BottomCartCheckout extends StatelessWidget {
     var cubit = AppCubit.get(context);
     return Container(
       decoration: BoxDecoration(
-        color:  cubit.isDark ? AppColors.darkScaffold : AppColors.lightScaffold,
+        color:  cubit.getIsDarkMode ? AppColors.darkScaffold : AppColors.lightScaffold,
         border: Border(top: BorderSide(width: 1, color: Colors.grey.shade300)),
       ),
       child: SizedBox(

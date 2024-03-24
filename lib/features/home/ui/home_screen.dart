@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_app/core/logic/app_cubit.dart';
-import 'package:smart_app/core/logic/app_states.dart';
+import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/core/widgets/app_text.dart';
+import 'package:smart_app/core/widgets/custom_app_bar.dart';
+import 'package:smart_app/features/home/ui/widgets/categories_grid_view.dart';
+import 'package:smart_app/features/home/ui/widgets/home_banners.dart';
+import 'package:smart_app/features/home/ui/widgets/latest_arrival_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<AppCubit>(context);
-    return BlocConsumer<AppCubit, AppStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return const Scaffold(
-          body: Center(
-            child: Text(
-              'Home Screen',
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
-            ),
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'SmartShop', fontSize: 25),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeBanners(),
+              verticalSpace(30),
+              const AppText(text: 'Latest Arrival', fontSize: 20, fontWeight: FontWeight.bold,),
+              verticalSpace(20),
+              const LastArrivalListView(),
+              verticalSpace(30),
+              const AppText(text: 'Categories', fontSize: 20, fontWeight: FontWeight.bold,),
+              verticalSpace(20),
+              CategoriesGridView(),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
