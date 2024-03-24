@@ -13,13 +13,15 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Search', fontSize: 25),
-      body: Column(
-        children: [
-          verticalSpace(10),
-          SearchTextField(),
-          verticalSpace(10),
-          const SearchGridViewBuilder(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            verticalSpace(10),
+            SearchTextField(),
+            verticalSpace(10),
+            const SearchGridViewBuilder(),
+          ],
+        ),
       ),
     );
   }
