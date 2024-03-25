@@ -5,20 +5,24 @@ import 'package:smart_app/core/widgets/app_text.dart';
 class AppElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final double? padding;
+  final EdgeInsetsGeometry? padding;
+  final BorderRadiusGeometry? borderRadius;
 
   const AppElevatedButton(
       {super.key,
       required this.text,
       required this.onPressed,
-      this.padding,
+      this.padding, this.borderRadius,
       });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(20.h),
+        shape: RoundedRectangleBorder(
+          borderRadius:borderRadius ?? BorderRadius.circular(12.r),
+        ),
+        padding: padding ?? EdgeInsets.all(20.r),
       ),
       onPressed: onPressed,
       child: AppText(
