@@ -1,0 +1,51 @@
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_app/core/widgets/app_bar_leading.dart';
+import 'package:smart_app/core/widgets/app_empty_bag.dart';
+import 'package:smart_app/features/search/ui/widgets/search_grid_view_builder_item.dart';
+import 'package:smart_app/generated/assets.dart';
+
+class ViewedRecentlyScreen extends StatelessWidget {
+  final bool isEmpty = false;
+
+  const ViewedRecentlyScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    if (isEmpty) {
+      return const Scaffold(
+        body: AppEmptyBag(
+          imageUrl: Assets.bagOrder,
+          subTitle:
+          'You did\'t view any products yet',
+          buttonText: 'Shop now',
+        ),
+      );
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          leading: const AppBarLeading(),
+          title: const Text(
+            'Seen Products',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5.w),
+            child: DynamicHeightGridView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 20,
+              builder: (context, index) => const SearchGridViewBuilderItem(),
+              crossAxisCount: 2,
+            ),
+          ),
+        ),
+      );
+    }
+  }
+}

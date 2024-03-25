@@ -13,7 +13,7 @@ class CustomListTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){onTap;},
+      onTap: onTap,
       leading: Image.asset(imageUrl, height: 30.h,),
       title: Text(title, style: const TextStyle(fontSize: 20),),
       trailing: const Icon(IconlyBold.arrowRight2),
