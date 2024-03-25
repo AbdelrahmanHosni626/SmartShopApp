@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_app/core/helpers/extensions.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
-import 'package:smart_app/features/profile/ui/widgets/custom_list_tiles.dart';
 import 'package:smart_app/generated/assets.dart';
 
 class OthersSection extends StatelessWidget {
@@ -11,38 +11,51 @@ class OthersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          text: 'Others',
-          fontSize: 20.sp,
-          fontWeight: FontWeight.bold,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
+    return Align(
+      alignment: Alignment.center,
+      child: ElevatedButton.icon(
+        icon: const Icon(IconlyLight.login, color: Colors.white),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.red),
         ),
-        verticalSpace(7),
-        CustomListTiles(
-          imageUrl: Assets.profilePrivacy,
-          title: 'Privacy & Policy',
-          onTap: () {},
+        label: const AppText(
+          text: 'Login',
+          color: Colors.white,
         ),
-        verticalSpace(20),
-        Align(
-          alignment: Alignment.center,
-          child: ElevatedButton.icon(
-            icon: const Icon(IconlyLight.logout, color: Colors.white),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red),
-            ),
-            onPressed: () {},
-            label: const AppText(
-              text: 'Logout',
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
+        onPressed: () async{
+          await showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                actionsAlignment: MainAxisAlignment.center,
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children:
+                  [
+                    Image.asset(Assets.imagesWarning, height: 100.h,),
+                    verticalSpace(20),
+                    const AppText(text: 'Are You Sure?'),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text('Cancel', style: TextStyle(color: Colors.green),),
+                    onPressed: ()
+                    {
+                      Navigator.canPop(context) ? context.pop() : null;
+                    },
+                  ),
+                  TextButton(
+                    child: const Text('OK', style: TextStyle(color: Colors.red),),
+                    onPressed: (){},
+                  ),
+
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
               verticalSpace(7),
               const SettingSection(),
               const Divider(thickness: 1),
-              verticalSpace(7),
+              verticalSpace(20),
               const OthersSection(),
 
             ],

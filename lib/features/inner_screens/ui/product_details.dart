@@ -1,8 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart_app/core/helpers/extensions.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/core/widgets/app_bar_leading.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 import 'package:smart_app/features/profile/ui/widgets/app_bar_title.dart';
 import 'package:smart_app/generated/assets.dart';
@@ -16,14 +16,7 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.canPop(context) ? context.pop() : null;
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-          ),
-        ),
+        leading: const AppBarLeading(),
         title: const AppBarTitle(title: 'SmartShop', fontSize: 25),
         centerTitle: true,
         actions: [

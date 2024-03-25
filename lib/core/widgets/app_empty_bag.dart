@@ -5,12 +5,13 @@ import 'package:smart_app/core/widgets/app_elevated_button.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 
 class AppEmptyBag extends StatelessWidget {
-  final String imageUrl, title, subTitle, buttonText;
+  final String imageUrl, subTitle, buttonText;
+  final String? title;
 
   const AppEmptyBag(
       {super.key,
       required this.imageUrl,
-      required this.title,
+      this.title,
       required this.subTitle,
       required this.buttonText});
 
@@ -27,14 +28,15 @@ class AppEmptyBag extends StatelessWidget {
               height: size.height * 0.35,
               width: double.infinity,
             ),
+            verticalSpace(20),
             const AppText(
-              text: 'Whoops',
+              text: 'Whoops!',
               fontSize: 40,
               color: Colors.red,
             ),
             verticalSpace(20),
             AppText(
-              text: title,
+              text: title!,
               fontSize: 25,
               fontWeight: FontWeight.w600,
             ),
@@ -42,8 +44,7 @@ class AppEmptyBag extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: AppText(
-                text:
-                    subTitle,
+                text: subTitle,
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
               ),

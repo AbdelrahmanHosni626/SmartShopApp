@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_app/core/helpers/extensions.dart';
+import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 import 'package:smart_app/features/profile/ui/widgets/custom_list_tiles.dart';
 import 'package:smart_app/generated/assets.dart';
@@ -21,18 +23,24 @@ class GeneralSection extends StatelessWidget {
         ),
         CustomListTiles(
           imageUrl: Assets.bagOrderSvg,
-          title: 'Address',
+          title: 'All Orders',
           onTap: (){},
         ),
         CustomListTiles(
           imageUrl: Assets.bagWishlistSvg,
           title: 'Wishlist',
-          onTap: (){},
+          onTap: ()
+          {
+            context.pushNamed(Routes.wishlist);
+          },
         ),
         CustomListTiles(
           imageUrl: Assets.profileRecent,
           title: 'Viewed recently',
-          onTap: (){},
+          onTap: ()
+          {
+            context.pushNamed(Routes.viewedRecently);
+          },
         ),
         CustomListTiles(
           imageUrl: Assets.profileAddress,
