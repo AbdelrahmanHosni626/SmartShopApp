@@ -1,5 +1,5 @@
 class FormValidators {
-  static String? displayNamevalidator(String? displayName) {
+  static String? displayNameValidator(String? displayName) {
     if (displayName == null || displayName.isEmpty) {
       return 'Display name cannot be empty';
     }
