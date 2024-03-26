@@ -28,7 +28,7 @@ class SmartApp extends StatelessWidget {
               theme: AppTheme.appTheme(isDark: cubit.getIsDarkMode, context: context),
               debugShowCheckedModeBanner: false,
               onGenerateRoute: appRouter.generateRoute,
-              initialRoute: Routes.login,
+              initialRoute: Routes.bottomNavigationBarScreen,
             );
           }
         ),

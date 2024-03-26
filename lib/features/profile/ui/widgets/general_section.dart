@@ -24,7 +24,10 @@ class GeneralSection extends StatelessWidget {
         CustomListTiles(
           imageUrl: Assets.bagOrderSvg,
           title: 'All Orders',
-          onTap: (){},
+          onTap: ()
+          {
+            context.pushNamed(Routes.allOrders);
+          },
         ),
         CustomListTiles(
           imageUrl: Assets.bagWishlistSvg,
