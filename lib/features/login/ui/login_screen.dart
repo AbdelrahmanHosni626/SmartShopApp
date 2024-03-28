@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       verticalSpace(30),
-                      LoginForm(),
+                      const LoginForm(),
                       verticalSpace(30),
                       const OrConnectUsing(),
                       verticalSpace(20),

@@ -6,18 +6,22 @@ import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_heart_icon.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
-import 'package:smart_app/generated/assets.dart';
+import 'package:smart_app/features/bottom_navigation_bar/logic/bottom_nav_cubit.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 
 class LastArrivalItem extends StatelessWidget {
-  const LastArrivalItem({super.key});
+  final ProductModel product;
+  const LastArrivalItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var cubit = BottomNavCubit.get(context);
     return GestureDetector(
       onTap: ()
       {
-        context.pushNamed(Routes.productDetails);
+        cubit.findByProdId(id: product.productId);
+        context.pushNamed(Routes.productDetails, arguments: product);
       },
       child: SizedBox(
         width:  size.width * 0.5.w,
@@ -28,7 +32,7 @@ class LastArrivalItem extends StatelessWidget {
               child: FancyShimmerImage(
                 width: size.width * 0.2.w,
                 height: size.height * 0.18.h,
-                imageUrl: Assets.testImage,
+                imageUrl: product.productImage,
               ),
             ),
             horizontalSpace(10),
@@ -36,7 +40,7 @@ class LastArrivalItem extends StatelessWidget {
               child: Column(
                 children: [
                   AppText(
-                    text: 'text' * 10,
+                    text: product.productTitle,
                     fontSize: 18.sp,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -53,8 +57,8 @@ class LastArrivalItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const AppText(
-                    text: '\$1234.00',
+                  AppText(
+                    text: '\$${product.productPrice}',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

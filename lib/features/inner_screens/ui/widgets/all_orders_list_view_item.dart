@@ -6,10 +6,12 @@ import 'package:smart_app/core/helpers/extensions.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
-import 'package:smart_app/generated/assets.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 
 class AllOrdersListViewItem extends StatelessWidget {
-  const AllOrdersListViewItem({super.key});
+
+  final ProductModel product;
+  const AllOrdersListViewItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class AllOrdersListViewItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.r),
                   child: FancyShimmerImage(
                     imageUrl:
-                    Assets.testImage,
+                    product.productImage,
                     height: size.height * 0.2.h,
                     width: size.width * 0.3.w,
                   ),
@@ -42,9 +44,9 @@ class AllOrdersListViewItem extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: size.width * 0.5,
-                            child: const AppText(
+                            child: AppText(
                               text:
-                              'Apple iPhone 14 Pro (128GB) - Black',
+                              product.productTitle,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -59,8 +61,8 @@ class AllOrdersListViewItem extends StatelessWidget {
                         ],
                       ),
                       verticalSpace(20),
-                      const AppText(text: 'Price: \$1999.99'),
-                      const AppText(text: 'Qty: 1'),
+                       AppText(text: 'Price: \$${product.productPrice}'),
+                       AppText(text: 'Qty: ${product.productQuantity}'),
                     ],
                   ),
                 ),

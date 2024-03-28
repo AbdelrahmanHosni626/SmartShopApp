@@ -1,16 +1,19 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_app/core/helpers/extensions.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_bar_leading.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 import 'package:smart_app/features/profile/ui/widgets/app_bar_title.dart';
-import 'package:smart_app/generated/assets.dart';
 
 import '../../../core/widgets/app_heart_icon.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  final ProductModel product;
+  const ProductDetails({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,10 @@ class ProductDetails extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: IconButton(
               icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () {},
+              onPressed: ()
+              {
+                context.pushNamed(Routes.bottomNavigationBarScreen[2]);
+              },
             ),
           ),
         ],
@@ -39,24 +45,28 @@ class ProductDetails extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(15.r)),
                 child: FancyShimmerImage(
-                  imageUrl: Assets.testImage,
+                  imageUrl: product.productImage,
                   width: double.infinity,
                   boxFit: BoxFit.fill,
                 ),
               ),
               verticalSpace(20),
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: AppText(
-                      text: 'Apple iPhone 14 Pro (128GB) - Black',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.7.w,
+                    child: Flexible(
+                      child: AppText(
+                        text: product.productTitle,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
+                  const Spacer(),
                   AppText(
-                    text: '\$1999.00',
+                    text: '\$${product.productPrice}',
                     color: Colors.blue,
                   ),
                 ],
@@ -81,10 +91,10 @@ class ProductDetails extends StatelessWidget {
                 ),
               ),
               verticalSpace(20),
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     child: AppText(
                       text: 'About This Item',
                       fontSize: 16,
@@ -93,15 +103,15 @@ class ProductDetails extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   AppText(
-                    text: 'in Phones',
+                    text: product.productCategory,
                     color: Colors.blue,
                   ),
                 ],
               ),
               verticalSpace(20),
-              AppText(text: 'Description ' *20),
+              AppText(text: product.productDescription),
             ],
           ),
         ),
