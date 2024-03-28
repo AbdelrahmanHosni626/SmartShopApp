@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:smart_app/core/widgets/app_bar_leading.dart';
 import 'package:smart_app/core/widgets/app_empty_bag.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 import 'package:smart_app/features/inner_screens/ui/widgets/all_orders_list_view_item.dart';
 import 'package:smart_app/features/profile/ui/widgets/app_bar_title.dart';
 import 'package:smart_app/generated/assets.dart';
@@ -42,9 +43,8 @@ class AllOrdersScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         separatorBuilder: (context, index) => const Divider(),
-        itemCount: 10,
-        itemBuilder: (context, index) =>
-        const AllOrdersListViewItem(),
+        itemCount: ProductModel.products.length,
+        itemBuilder: (context, index) => AllOrdersListViewItem(product: ProductModel.products[index],),
       ),
     );
   }

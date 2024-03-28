@@ -8,17 +8,18 @@ import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_heart_icon.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
 import 'package:smart_app/features/cart/ui/widgets/quantity_bottom_sheet.dart';
-import 'package:smart_app/generated/assets.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 
 class ShoppingBasketListViewItem extends StatelessWidget {
-  const ShoppingBasketListViewItem({super.key});
+  final ProductModel product;
+  const ShoppingBasketListViewItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: (){
-        context.pushNamed(Routes.productDetails);
+        context.pushNamed(Routes.productDetails, arguments: product);
       },
       child: FittedBox(
         child: IntrinsicWidth(
@@ -30,7 +31,7 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.r),
                   child: FancyShimmerImage(
                     imageUrl:
-                        Assets.testImage,
+                    product.productImage,
                     height: size.height * 0.2.h,
                     width: size.width * 0.3.w,
                   ),
@@ -44,9 +45,9 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: size.width * 0.6,
-                            child: const AppText(
+                            child: AppText(
                               text:
-                                  'Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air Nike Air ',
+                              product.productTitle,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -67,7 +68,7 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const AppText(text: '\$50.00'),
+                          AppText(text: '\$${product.productPrice}'),
                           const Spacer(),
                           OutlinedButton.icon(
                             onPressed: () async {
@@ -79,7 +80,7 @@ class ShoppingBasketListViewItem extends StatelessWidget {
                               );
                             },
                             icon: const Icon(IconlyLight.arrowDown2),
-                            label: const Text('Qty: 6'),
+                            label: Text(product.productQuantity),
                           ),
                         ],
                       ),

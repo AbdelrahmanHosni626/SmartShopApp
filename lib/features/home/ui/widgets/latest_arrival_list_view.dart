@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 import 'package:smart_app/features/home/ui/widgets/lastest_arrival_item.dart';
 
 class LastArrivalListView extends StatelessWidget {
@@ -12,9 +13,9 @@ class LastArrivalListView extends StatelessWidget {
       height:  MediaQuery.of(context).size.height * 0.2.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 20,
+        itemCount: ProductModel.products.length,
         separatorBuilder: (context, index) => horizontalSpace(10),
-        itemBuilder: (context, index) => const LastArrivalItem(),
+        itemBuilder: (context, index) => LastArrivalItem(product:  ProductModel.products[index],),
       ),
     );
   }

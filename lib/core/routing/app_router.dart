@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/features/bottom_navigation_bar/ui/bottom_navigation_bar_screen.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 import 'package:smart_app/features/inner_screens/ui/all_orders.dart';
 import 'package:smart_app/features/inner_screens/ui/product_details.dart';
 import 'package:smart_app/features/inner_screens/ui/viewd_recently.dart';
@@ -21,7 +22,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => BottomNavigationBarScreen());
 
       case Routes.productDetails:
-        return MaterialPageRoute(builder: (_) => const ProductDetails());
+        late final productModel = settings.arguments;
+        return MaterialPageRoute(builder: (_) => ProductDetails(product: productModel as ProductModel,));
 
       case Routes.allOrders:
         return MaterialPageRoute(builder: (_) => const AllOrdersScreen());

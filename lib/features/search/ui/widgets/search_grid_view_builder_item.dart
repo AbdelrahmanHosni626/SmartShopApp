@@ -6,18 +6,25 @@ import 'package:smart_app/core/helpers/spacing.dart';
 import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_heart_icon.dart';
 import 'package:smart_app/core/widgets/app_text.dart';
-import 'package:smart_app/generated/assets.dart';
+import 'package:smart_app/features/bottom_navigation_bar/logic/bottom_nav_cubit.dart';
+
+import '../../../home/data/models/product_model.dart';
 
 class SearchGridViewBuilderItem extends StatelessWidget {
-  const SearchGridViewBuilderItem({super.key});
+
+
+  final ProductModel product;
+  const SearchGridViewBuilderItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BottomNavCubit.get(context);
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: ()
       {
-        context.pushNamed(Routes.productDetails);
+        cubit.findByProdId(id: product.productId);
+        context.pushNamed(Routes.productDetails, arguments: product);
       },
       child: Padding(
         padding: EdgeInsets.all(3.r),
@@ -26,23 +33,23 @@ class SearchGridViewBuilderItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(30.r)),
               child: FancyShimmerImage(
-                imageUrl: Assets.testImage,
+                imageUrl: product.productImage,
                 height: size.height * 0.25.h,
                 width: double.infinity,
               ),
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
                   flex: 3,
                   child: AppText(
-                    text: 'Apple Iphone',
+                    text: product.productTitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Flexible(
+                const Flexible(
                   child: AppHeartIconButton(bgColor: Colors.transparent,),
                 ),
               ],
@@ -50,10 +57,10 @@ class SearchGridViewBuilderItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Flexible(
+                Flexible(
                   flex: 3,
                   child: AppText(
-                    text: '\$50000.00',
+                    text: '\$${product.productPrice}',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -5,8 +5,6 @@ import 'package:smart_app/features/search/ui/widgets/search_grid_view_builder.da
 import 'package:smart_app/features/search/ui/widgets/search_text_field.dart';
 
 class SearchScreen extends StatelessWidget {
-
-
   const SearchScreen({super.key});
 
   @override

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_app/core/helpers/extensions.dart';
 import 'package:smart_app/core/helpers/form_validators.dart';
 import 'package:smart_app/core/helpers/spacing.dart';
+import 'package:smart_app/core/routing/routes.dart';
 import 'package:smart_app/core/widgets/app_elevated_button.dart';
 import 'package:smart_app/core/widgets/app_text_form_field.dart';
 
@@ -51,6 +53,12 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: isPassword,
             hint: '*************',
             prefix: IconlyLight.password,
+            validator: (value) {
+              return FormValidators.passwordValidator(value);
+            },
+            onFieldSubmitted: (value) {
+              if (loginFormKey.currentState!.validate()) {}
+            },
             suffix: isPassword
                 ? Icons.visibility
                 : Icons.visibility_off,
@@ -74,7 +82,10 @@ class _LoginFormState extends State<LoginForm> {
             width: double.infinity,
             child: AppElevatedButton(
               padding: EdgeInsets.all(1.r),
-              onPressed: () {},
+              onPressed: ()
+              {
+                context.pushNamed(Routes.bottomNavigationBarScreen);
+              },
               text: 'Sign in',
             ),
           ),

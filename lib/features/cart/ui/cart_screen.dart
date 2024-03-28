@@ -3,6 +3,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:smart_app/core/widgets/app_empty_bag.dart';
 import 'package:smart_app/features/cart/ui/widgets/bottom_cart_checkout.dart';
 import 'package:smart_app/features/cart/ui/widgets/shopping_basket_listview_item.dart';
+import 'package:smart_app/features/home/data/models/product_model.dart';
 import 'package:smart_app/features/profile/ui/widgets/app_bar_title.dart';
 import 'package:smart_app/generated/assets.dart';
 
@@ -42,9 +43,9 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             body: ListView.builder(
-              itemCount: 10,
+              itemCount: ProductModel.products.length,
               itemBuilder: (context, index) =>
-                  const ShoppingBasketListViewItem(),
+                  ShoppingBasketListViewItem(product: ProductModel.products[index],),
             ),
           );
   }
